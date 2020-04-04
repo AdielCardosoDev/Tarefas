@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, FlatList, Image, Modal, TextInput } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import TaskList from './src/components/TaskList/index';
 import * as Animatable from 'react-native-animatable';
@@ -14,10 +14,14 @@ export default function App() {
     { key:2, task: 'estudar RN'},
     { key:3, task: 'acordar de manha para comer adadadsdfddfsdfsdf'},
     { key:4, task: 'carro novo'},
-    { key:5, task: 'note novo'},
-    
-
+    { key:5, task: 'note novo'}, 
   ]);
+
+  const [open, setOpen] = useState(false);
+
+
+
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor='#20201d' barStyle='light-content' />
@@ -38,10 +42,41 @@ export default function App() {
 
       />
 
+      <Modal animationType='slide' transparent={false} visible={open} >
+      <SafeAreaView style={styles.modal} >
+
+        <View style={styles.modalHeader} >
+        <TouchableOpacity onPress={()=>setOpen(false)}>
+          <Ionicons style={{marginLeft:5, marginRight:5 }} name='md-arrow-back' size={40} color="#ffe000" />
+        </TouchableOpacity>
+
+        <Text style={styles.modalTitle}>Nova Tarefa</Text>
+        </View>
+
+        <View style={styles.modalBody}>
+          <TextInput 
+          placeholder='Qual a bronca?' 
+          style={styles.input} 
+          multiline={true} 
+          autoCorrect={false} 
+          placeholderTextColor='#747474' 
+          value={}
+          onChangeText={()=>{}}
+          />
+
+          <TouchableOpacity style={styles.handleAdd}>
+            <Text style={styles.handleAddText} >Salvar</Text>
+          </TouchableOpacity>
+        </View>
+
+      </SafeAreaView>
+      </Modal>
+
       <AnimatableBtn style={styles.fab}
       useNativeDriver
       animation='bounceInUp'
       duration={1500}
+      onPress={()=> setOpen(true)}
       >
         <Ionicons name='ios-add' size={35} color='#fff' />
       </AnimatableBtn>
@@ -89,5 +124,49 @@ const styles = StyleSheet.create({
       height:3,
     }  
   },
+  modal:{
+    flex:1,
+    backgroundColor:'#980000'
+  },
+  modalHeader:{
+    marginLeft:10,
+    marginTop:20,
+    flexDirection:'row',
+    alignItems:'center'
+  },
+  modalTitle:{
+    marginLeft:15,
+    fontSize:23,
+    color:'#fff',
+    fontWeight:'bold'
+  },
+  modalBody:{
+    marginTop:15,
+  },
+  input:{
+    fontSize:15,
+    marginLeft:10,
+    marginRight:10,
+    marginTop:25,
+    backgroundColor:'#fff',
+    padding:9,
+    height:85,
+    textAlignVertical:'top',
+    color:'#000',
+    borderRadius:5
+  },
+  handleAdd:{
+    backgroundColor:'#ffe000',
+    marginTop:10,
+    alignItems:'center',
+    justifyContent:'center',
+    marginLeft:10,
+    marginRight:10,
+    height:40,
+    borderRadius:5
+  },
+  handleAddText:{
+    fontSize:20
+  }
 
 });
