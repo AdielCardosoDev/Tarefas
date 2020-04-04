@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, FlatList, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import TaskList from './src/components/TaskList/index';
+import * as Animatable from 'react-native-animatable';
+
+const AnimatableBtn = Animatable.createAnimatableComponent(TouchableOpacity);
+
 
 
 export default function App() {
@@ -34,9 +38,13 @@ export default function App() {
 
       />
 
-      <TouchableOpacity style={styles.fab} >
+      <AnimatableBtn style={styles.fab}
+      useNativeDriver
+      animation='bounceInUp'
+      duration={1500}
+      >
         <Ionicons name='ios-add' size={35} color='#fff' />
-      </TouchableOpacity>
+      </AnimatableBtn>
 
 
 
