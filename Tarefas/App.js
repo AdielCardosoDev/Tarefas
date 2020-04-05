@@ -9,16 +9,20 @@ const AnimatableBtn = Animatable.createAnimatableComponent(TouchableOpacity);
 
 
 export default function App() {
-  const [task, setTask] = useState([
-    { key:1, task: 'Comprar pão'},
-    { key:2, task: 'estudar RN'},
-    { key:3, task: 'acordar de manha para comer adadadsdfddfsdfsdf'},
-    { key:4, task: 'carro novo'},
-    { key:5, task: 'note novo'}, 
-  ]);
-
+  const [task, setTask] = useState([]);
   const [open, setOpen] = useState(false);
 
+  function handleAdd(){
+    if(input === '') return;
+    const data = {
+      key: input,
+      task: input
+    };
+
+    setTask([...task, data]);
+    setOpen(false);
+    setInput('');
+  }
 
 
 
@@ -53,21 +57,26 @@ export default function App() {
         <Text style={styles.modalTitle}>Nova Tarefa</Text>
         </View>
 
-        <View style={styles.modalBody}>
+        <Animatable.View style={styles.modalBody} animation='fadeInUp' useNativeDriver>
           <TextInput 
+          
           placeholder='Qual a bronca?' 
           style={styles.input} 
           multiline={true} 
-          autoCorrect={false} 
+          autoCorrect={false}
           placeholderTextColor='#747474' 
-          value={}
-          onChangeText={()=>{}}
+          value={input}
+          onChangeText={(texto)=> setInput(texto)}
+          
+          
           />
 
-          <TouchableOpacity style={styles.handleAdd}>
+          <TouchableOpacity style={styles.handleAdd} 
+          onPress={handleAdd}
+          >
             <Text style={styles.handleAddText} >Salvar</Text>
           </TouchableOpacity>
-        </View>
+        </Animatable.View>
 
       </SafeAreaView>
       </Modal>
