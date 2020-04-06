@@ -11,6 +11,7 @@ const AnimatableBtn = Animatable.createAnimatableComponent(TouchableOpacity);
 export default function App() {
   const [task, setTask] = useState([]);
   const [open, setOpen] = useState(false);
+  const [input, setInput] = useState('');
 
   function handleAdd(){
     if(input === '') return;
