@@ -34,6 +34,8 @@ export default function App() {
 
   }, [task]);
 
+
+
   function handleAdd(){
     if(input === '') return;
     const data = {
@@ -46,7 +48,10 @@ export default function App() {
     setInput('');
   }
 
-
+ const handleDelete = useCallback((data)=>{
+   const find = task.filter(r => r.key !== data.key);
+   setTask(find);
+ })
 
   return (
     <SafeAreaView style={styles.container}>
@@ -64,7 +69,7 @@ export default function App() {
       showsVerticalScrollIndicator={false}
       data={task}
       keyExtractor={(item)=> String(item.key)}
-      renderItem={({item})=> <TaskList data={item}/>}
+      renderItem={({item})=> <TaskList data={item} handleDelete={handleDelete}/>}
 
       />
 
