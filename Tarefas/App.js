@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, FlatList, Image, Modal, TextInput } from 'react-native';
+import React, {useState, useCallback, useEffect} from 'react';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, FlatList, Image, Modal, TextInput, AsyncStorage } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import TaskList from './src/components/TaskList/index';
 import * as Animatable from 'react-native-animatable';
@@ -12,6 +12,27 @@ export default function App() {
   const [task, setTask] = useState([]);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
+
+  useEffect(() => {
+   async function loadTasks(){
+      const taskStorage = await AsyncStorage.getItem('@task');
+      if(taskStorage){
+        setTask(JSON.parse(taskStorage));
+      }
+    }
+
+    loadTasks();
+
+  }, []);
+
+  useEffect(() => {
+    async function saveTasks(){
+      await AsyncStorage.setItem('@task', JSON.stringify(task));
+    }
+
+    saveTasks();
+
+  }, [task]);
 
   function handleAdd(){
     if(input === '') return;
@@ -85,7 +106,7 @@ export default function App() {
       <AnimatableBtn style={styles.fab}
       useNativeDriver
       animation='bounceInUp'
-      duration={1500}
+      duration={1300}
       onPress={()=> setOpen(true)}
       >
         <Ionicons name='ios-add' size={35} color='#fff' />
