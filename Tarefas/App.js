@@ -60,8 +60,8 @@ export default function App() {
       <View style={styles.content}>             
       </View>
 
-      <View style={styles.Logo}>
-      <Image source={require('../Tarefas/src/assets/Logo.png')} style={styles.title}/>   
+      <View style={styles.title}>
+      <Text style={styles.titleM}>Minhas Tarefas</Text>   
       </View>      
 
       <FlatList 
@@ -78,7 +78,7 @@ export default function App() {
 
         <View style={styles.modalHeader} >
         <TouchableOpacity onPress={()=>setOpen(false)}>
-          <Ionicons style={{marginLeft:5, marginRight:5 }} name='md-arrow-back' size={40} color="#ffe000" />
+          <Ionicons style={{marginLeft:5, marginRight:5 }} name='md-arrow-back' size={40} color="#f6bf08" />
         </TouchableOpacity>
 
         <Text style={styles.modalTitle}>Nova Tarefa</Text>
@@ -126,26 +126,28 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#980000', 
+    backgroundColor: '#1C1C1C', 
     
   },
   content:{
 
   },
-  title:{  
-    width:150,
-    height:150,
+  title:{      
     alignItems:'center',
-    justifyContent:'center'  
+    justifyContent:'center',
+    marginTop:15, 
+     
   },
-  Logo:{
-    alignItems:'center'
-  },
+  titleM:{
+    fontSize:30,
+    color:'#fff',
+    fontWeight:'bold'
+  },  
   fab:{
     position:'absolute',
     width:60,
     height:60,
-    backgroundColor:'#ffe000',
+    backgroundColor:'#f6bf08',
     alignItems:'center',
     justifyContent:'center',
     borderRadius:30,
@@ -162,7 +164,7 @@ const styles = StyleSheet.create({
   },
   modal:{
     flex:1,
-    backgroundColor:'#980000'
+    backgroundColor:'#1C1C1C'
   },
   modalHeader:{
     marginLeft:10,
@@ -192,7 +194,7 @@ const styles = StyleSheet.create({
     borderRadius:5
   },
   handleAdd:{
-    backgroundColor:'#ffe000',
+    backgroundColor:'#f6bf08',
     marginTop:10,
     alignItems:'center',
     justifyContent:'center',

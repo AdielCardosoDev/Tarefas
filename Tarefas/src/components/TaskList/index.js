@@ -15,7 +15,7 @@ export default function TaskList({data, handleDelete}){
             <TouchableOpacity
             onPress={()=>handleDelete(data)}
             >
-            <Ionicons name='md-checkmark-circle' size={30} color='#000' />
+            <Ionicons name='md-checkmark-circle' size={30} color='#f6bf08' />
             </TouchableOpacity>
             <View>
                 <Text style={styles.task}>
