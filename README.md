@@ -1,2 +1,2 @@
 # Tarefas
- Gerenciador de atividades
+ Gerenciador de atividades - Pendencias - Pesoais!
