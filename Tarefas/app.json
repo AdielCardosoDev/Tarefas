@@ -24,11 +24,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.adielcardoso.tarefas"
     },
     "androidStatusBar":{
       "barStyle": "light-content",
       "backgroundColor":"#000"
+      
+    },
+    "android": {
+      "package": "com.adielcardoso.tarefas"      
     }
   }
 }
