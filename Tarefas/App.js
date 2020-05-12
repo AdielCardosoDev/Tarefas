@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, FlatList, Image, Modal, TextInput, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, FlatList, Linking, Modal, TextInput, AsyncStorage, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import TaskList from './src/components/TaskList/index';
 import * as Animatable from 'react-native-animatable';
@@ -12,6 +12,7 @@ export default function App() {
   const [task, setTask] = useState([]);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
+  const [sobre, setSobre] = useState(false);
 
   useEffect(() => {
    async function loadTasks(){
@@ -48,6 +49,8 @@ export default function App() {
     setInput('');
   }
 
+ 
+
  const handleDelete = useCallback((data)=>{
    const find = task.filter(r => r.key !== data.key);
    setTask(find);
@@ -78,7 +81,7 @@ export default function App() {
 
         <View style={styles.modalHeader} >
         <TouchableOpacity onPress={()=>setOpen(false)}>
-          <Ionicons style={{marginLeft:5, marginRight:5 }} name='md-arrow-back' size={40} color="#f6bf08" />
+          <Ionicons style={{marginLeft:5, marginRight:5 }} name='md-arrow-back' size={40} color="#D32F2F" />
         </TouchableOpacity>
 
         <Text style={styles.modalTitle}>Nova Tarefa</Text>
@@ -100,10 +103,35 @@ export default function App() {
 
           <TouchableOpacity style={styles.handleAdd} 
           onPress={handleAdd}
+          activeOpacity={0.7}
           >
             <Text style={styles.handleAddText} >Salvar</Text>
           </TouchableOpacity>
         </Animatable.View>
+
+        <TouchableOpacity activeOpacity={0.6}
+        onPress={()=> setSobre(true)}
+        >          
+          <Text style={styles.sobre}  >Sobre</Text>
+        </TouchableOpacity>
+
+        <Modal animationType='slide' transparent={false} visible={sobre}>
+        <TouchableOpacity activeOpacity={0.9} style={styles.modalSobre} onPress={()=> setSobre(false) }
+          >
+            <Ionicons style={{marginLeft:5, marginRight:5 }} name='md-arrow-back' size={40} color="#D32F2F" />
+            <Text style={styles.voltar} >Voltar</Text>            
+          </TouchableOpacity>
+          
+
+          <Text style={styles.h1}>Olá, eu sou Adiel Cardoso estudante de desenvolvimento.</Text>
+          <Text style={styles.h2} >Conheça mais!</Text>
+
+          <Text style={styles.P1} onPress={()=>{Linking.openURL('https://www.instagram.com/adieldrummer/')}}>Instagram: @AdielDrummer</Text>
+          <Text style={styles.P2} onPress={()=>{Linking.openURL('https://github.com/AdielCardosoDev')}} >GitHab: Github.com/AdielCardosoDev</Text>  
+
+
+        </Modal>       
+
 
       </SafeAreaView>
       </Modal>
@@ -113,6 +141,7 @@ export default function App() {
       animation='bounceInUp'
       duration={1300}
       onPress={()=> setOpen(true)}
+      activeOpacity={0.7}
       >
         <Ionicons name='ios-add' size={35} color='#fff' />
       </AnimatableBtn>
@@ -126,7 +155,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1C1C1C', 
+    backgroundColor: '#ddd', 
     
   },
   content:{
@@ -140,14 +169,14 @@ const styles = StyleSheet.create({
   },
   titleM:{
     fontSize:30,
-    color:'#fff',
+    color:'#212121',
     fontWeight:'bold'
   },  
   fab:{
     position:'absolute',
     width:60,
     height:60,
-    backgroundColor:'#f6bf08',
+    backgroundColor:'#212121',
     alignItems:'center',
     justifyContent:'center',
     borderRadius:30,
@@ -164,7 +193,7 @@ const styles = StyleSheet.create({
   },
   modal:{
     flex:1,
-    backgroundColor:'#1C1C1C'
+    backgroundColor:'#ddd'
   },
   modalHeader:{
     marginLeft:10,
@@ -175,7 +204,7 @@ const styles = StyleSheet.create({
   modalTitle:{
     marginLeft:15,
     fontSize:23,
-    color:'#fff',
+    color:'#212121',
     fontWeight:'bold'
   },
   modalBody:{
@@ -194,7 +223,7 @@ const styles = StyleSheet.create({
     borderRadius:5
   },
   handleAdd:{
-    backgroundColor:'#f6bf08',
+    backgroundColor:'#D32F2F',
     marginTop:10,
     alignItems:'center',
     justifyContent:'center',
@@ -204,7 +233,58 @@ const styles = StyleSheet.create({
     borderRadius:5
   },
   handleAddText:{
-    fontSize:20
-  }
-
+    fontSize:20,
+    color:'#fff'
+  },
+  sobre:{
+    textAlign:'center',
+    marginTop:350,
+    fontSize:20,
+    fontWeight:'bold',
+    
+  },
+  modalSobre:{
+   marginLeft:10,
+    marginTop:20,
+    flexDirection:'row',
+    alignItems:'center'
+     
+  },
+  voltar:{
+    marginLeft:5,
+    fontSize:23,
+    color:'#212121',
+    fontWeight:'bold'
+  },
+  h1:{
+    fontSize:20,
+    textAlign:'center',
+    fontWeight:'bold',
+    marginTop:50,
+    marginLeft:10,
+    marginEnd:10
+  },
+  h2:{
+    fontSize:20,
+    fontWeight:'bold',
+    textAlign:'center',
+    marginTop:30,
+    color:'#D32F2F',
+  
+  },
+  P1:{
+    textAlign:'center',
+    marginTop:15,
+    fontSize:20,
+    fontWeight:'bold',
+    
+    
+  },
+  P2:{
+    marginTop:5,
+    textAlign: 'center',
+    fontSize:20,
+    fontWeight:'bold'
+  },
+ 
 });

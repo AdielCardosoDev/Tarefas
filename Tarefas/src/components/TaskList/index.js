@@ -13,14 +13,16 @@ export default function TaskList({data, handleDelete}){
         
         
             <TouchableOpacity
+            activeOpacity={0.7}
             onPress={()=>handleDelete(data)}
             >
-            <Ionicons name='md-checkmark-circle' size={30} color='#f6bf08' />
+            <Ionicons name='md-checkmark-circle' size={30} color='#D32F2F' />
             </TouchableOpacity>
             <View>
                 <Text style={styles.task}>
                     {data.task}
                 </Text>
+                
             </View>
             
         </Animatable.View>
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
         }
     },
     task:{
-        color: '#121212',
+        color: '#212121',
         fontSize:20,
         paddingLeft:8,
         paddingRight:20
