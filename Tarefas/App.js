@@ -109,28 +109,7 @@ export default function App() {
           </TouchableOpacity>
         </Animatable.View>
 
-        <TouchableOpacity activeOpacity={0.6}
-        onPress={()=> setSobre(true)}
-        >          
-          <Text style={styles.sobre}  >Sobre</Text>
-        </TouchableOpacity>
-
-        <Modal animationType='slide' transparent={false} visible={sobre}>
-        <TouchableOpacity activeOpacity={0.9} style={styles.modalSobre} onPress={()=> setSobre(false) }
-          >
-            <Ionicons style={{marginLeft:5, marginRight:5 }} name='md-arrow-back' size={40} color="#D32F2F" />
-            <Text style={styles.voltar} >Voltar</Text>            
-          </TouchableOpacity>
-          
-
-          <Text style={styles.h1}>Olá, eu sou Adiel Cardoso estudante de desenvolvimento.</Text>
-          <Text style={styles.h2} >Conheça mais!</Text>
-
-          <Text style={styles.P1} onPress={()=>{Linking.openURL('https://www.instagram.com/adieldrummer/')}}>Instagram: @AdielDrummer</Text>
-          <Text style={styles.P2} onPress={()=>{Linking.openURL('https://github.com/AdielCardosoDev')}} >GitHab: Github.com/AdielCardosoDev</Text>  
-
-
-        </Modal>       
+              
 
 
       </SafeAreaView>

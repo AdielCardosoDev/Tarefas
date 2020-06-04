@@ -4,10 +4,8 @@
     "slug": "Tarefas",
     "privacy": "public",
     "sdkVersion": "36.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
+    "platforms": [      
+      "android"     
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,11 +20,7 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.adielcardoso.tarefas"
-    },
+    ],   
     "androidStatusBar":{
       "barStyle": "light-content",
       "backgroundColor":"#000"
