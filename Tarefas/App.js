@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, FlatList, Linking, Modal, TextInput, AsyncStorage, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, FlatList,Modal, TextInput, AsyncStorage,  } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import TaskList from './src/components/TaskList/index';
 import * as Animatable from 'react-native-animatable';
