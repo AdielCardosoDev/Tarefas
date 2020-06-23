@@ -1,0 +1,29 @@
+const styles = StyleSheet.create({
+    Container:{
+        flex:1,
+        margin:8,
+        width:'95%',
+        height:100,
+        
+        alignItems:'center',
+        backgroundColor:'#FFF',
+        borderRadius:5,
+        padding:7,
+        elevation:1.5,
+        shadowColor:'#000',
+        shadowOpacity:0.2,
+        shadowOffset:{
+            width:1,
+            height:3,
+        }
+    },
+    task:{
+        color: '#212121',
+        fontSize:20,
+        paddingLeft:8,
+        paddingRight:20
+    },
+    delete:{
+        marginLeft:'50%'
+    }
+});

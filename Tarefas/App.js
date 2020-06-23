@@ -11,8 +11,7 @@ const AnimatableBtn = Animatable.createAnimatableComponent(TouchableOpacity);
 export default function App() {
   const [task, setTask] = useState([]);
   const [open, setOpen] = useState(false);
-  const [input, setInput] = useState('');
-  const [sobre, setSobre] = useState(false);
+  const [input, setInput] = useState('');  
 
   useEffect(() => {
    async function loadTasks(){
@@ -90,7 +89,7 @@ export default function App() {
         <Animatable.View style={styles.modalBody} animation='fadeInUp' useNativeDriver>
           <TextInput 
           
-          placeholder='Qual a bronca?' 
+          placeholder='Descreva a tarefa' 
           style={styles.input} 
           multiline={true} 
           autoCorrect={false}
