@@ -17,14 +17,14 @@ export default function TaskList({data, handleDelete}){
             {/* Botão finalizar tarefa*/}
             <View style={styles.card}>    
 
-            {/* Botão ecluir tarefa */}         
+            {/* Botão excluir tarefa */}         
             <TouchableOpacity activeOpacity={0.7} onPress={()=>handleDelete(data)} >
             <MaterialCommunityIcons name="delete-circle" size={31} color="#D32F2F" />
             </TouchableOpacity>
-
+            {/* Botão feito tarefa 
             <TouchableOpacity activeOpacity={0.7}  >
             <MaterialCommunityIcons name="check-circle" size={30} color="#D32F2F" />            
-            </TouchableOpacity>                        
+            </TouchableOpacity> */}                        
             </View>
 
             </View> 

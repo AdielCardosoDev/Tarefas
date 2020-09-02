@@ -6,8 +6,6 @@ import * as Animatable from 'react-native-animatable';
 
 const AnimatableBtn = Animatable.createAnimatableComponent(TouchableOpacity);
 
-
-
 export default function App() {
   const [task, setTask] = useState([]);
   const [open, setOpen] = useState(false);
